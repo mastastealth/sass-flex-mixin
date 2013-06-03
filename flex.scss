@@ -62,7 +62,7 @@
 	} @else if $value == "column-reverse" {
 		-webkit-box-direction: reverse;
 		-webkit-box-orient: vertical;
-	} else {
+	} @else {
 		-webkit-box-direction: normal;
 		-webkit-box-orient: horizontal;
 	}
@@ -86,7 +86,7 @@
 		} @else if $value == "column-reverse" {
 			-webkit-box-direction: reverse;
 			-webkit-box-orient: vertical;
-		} else {
+		} @else {
 			-webkit-box-direction: normal;
 			-webkit-box-orient: horizontal;
 		}
@@ -106,7 +106,10 @@
 	-moz-flex-wrap: $value;
 	@if $value == "nowrap" {
 		-ms-flex-wrap: none;
-	} else { -ms-flex-wrap: $value; }
+	} 
+	@else { 
+		-ms-flex-wrap: $value; 
+	}
 	flex-wrap: $value;
 }
 
@@ -179,22 +182,23 @@
 // Flexbox Justify Content
 // Values: flex-start | flex-end | center | space-between | space-around
 // Default: flex-start
+// (space-* values not supported in older syntaxes)
 
 @mixin justify-content($value) {
 	@if $value == "flex-start" {
 		-webkit-box-pack: start;
-	}
-	@else if $value == "flex-end" {
-		-webkit-box-pack: end;
-	} else { -webkit-box-pack: $value; }
-	-webkit-justify-content: $value;
-	-moz-justify-content: $value;
-	@if $value == "flex-start" {
 		-ms-flex-pack: start;
 	}
 	@else if $value == "flex-end" {
+		-webkit-box-pack: end;
 		-ms-flex-pack: end;
-	} else { -ms-flex-pack: $value; }
+	} 
+	@else { 
+		-webkit-box-pack: $value;
+		-ms-flex-pack: $value;
+	}
+	-webkit-justify-content: $value;
+	-moz-justify-content: $value;
 	justify-content: $value;
 }
 
@@ -202,18 +206,18 @@
 	@mixin flex-just($value) {
 		@if $value == "flex-start" {
 			-webkit-box-pack: start;
-		}
-		@else if $value == "flex-end" {
-			-webkit-box-pack: end;
-		} else { -webkit-box-pack: $value; }
-		-webkit-justify-content: $value;
-		-moz-justify-content: $value;
-		@if $value == "flex-start" {
 			-ms-flex-pack: start;
 		}
 		@else if $value == "flex-end" {
+			-webkit-box-pack: end;
 			-ms-flex-pack: end;
-		} else { -ms-flex-pack: $value; }
+		} 
+		@else { 
+			-webkit-box-pack: $value;
+			-ms-flex-pack: $value;
+		}
+		-webkit-justify-content: $value;
+		-moz-justify-content: $value;
 		justify-content: $value;
 	}
 
@@ -224,18 +228,18 @@
 @mixin align-items($value) {
 	@if $value == "flex-start" {
 		-webkit-box-align: start;
-	}
-	@else if $value == "flex-end" {
-		-webkit-box-align: end;
-	} else { -webkit-box-align: $value; }
-	-webkit-align-items: $value;
-	-moz-align-items: $value;
-	@if $value == "flex-start" {
 		-ms-flex-align: start;
 	}
 	@else if $value == "flex-end" {
+		-webkit-box-align: end;
 		-ms-flex-align: end;
-	} else { -ms-flex-align: $value; }
+	} 
+	@else { 
+		-webkit-box-align: $value; 
+		-ms-flex-align: $value;
+	}
+	-webkit-align-items: $value;
+	-moz-align-items: $value;
 	align-items: $value;
 }
 
@@ -252,7 +256,10 @@
 	}
 	@else if $value == "flex-end" {
 		-ms-flex-item-align: end;
-	} else { -ms-flex-item-align: $value; }
+	} 
+	@else { 
+		-ms-flex-item-align: $value; 
+	}
 	align-self: $value;
 }
 
@@ -269,6 +276,9 @@
 	}
 	@else if $value == "flex-end" {
 		-ms-flex-line-pack: end;
-	} else { -ms-flex-line-pack: $value; }
+	} 
+	@else { 
+		-ms-flex-line-pack: $value; 
+	}
 	align-content: $value;
 }
