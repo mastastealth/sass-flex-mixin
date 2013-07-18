@@ -221,16 +221,15 @@
 
 @mixin align-content($value) {
 	// No Webkit Box Fallback
-	-webkit-align-content: $value;
-	-moz-align-content: $value;
+	$align-value: $value;
+
 	@if $value == "flex-start" {
-		-ms-flex-line-pack: start;
+		$align-value: start;
 	}
 	@else if $value == "flex-end" {
-		-ms-flex-line-pack: end;
+		$align-value: end;
 	}
-	@else {
-		-ms-flex-line-pack: $value;
-	}
-	align-content: $value;
+
+	@include experimental(flex-line-pack, $align-value, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+	@include experimental(align-content, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
 }
