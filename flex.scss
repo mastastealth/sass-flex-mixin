@@ -30,6 +30,9 @@
 // Compass experimental utilities was inspired by:
 // https://gist.github.com/joseph-turner/5674311
 
+@import "compass/css3/shared";
+
+
 // Flexbox Inits
 // display: flex | inline-flex
 
@@ -179,21 +182,18 @@
 // Default: stretch
 
 @mixin align-items($value) {
+	$align-value: $value;
+
 	@if $value == "flex-start" {
-		-webkit-box-align: start;
-		-ms-flex-align: start;
+		$align-value: start;
 	}
 	@else if $value == "flex-end" {
-		-webkit-box-align: end;
-		-ms-flex-align: end;
+		$align-value: end;
 	}
-	@else {
-		-webkit-box-align: $value;
-		-ms-flex-align: $value;
-	}
-	-webkit-align-items: $value;
-	-moz-align-items: $value;
-	align-items: $value;
+
+	@include experimental(box-align, $align-value, not -moz, -webkit, not -o, not -ms, not -khtml, not official);
+	@include experimental(flex-align, $align-value, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+	@include experimental(align-items, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
 }
 
 // Flexbox Align Self
