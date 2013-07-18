@@ -100,10 +100,7 @@
 
 @mixin flex-flow($values) {
 	// No Webkit Box fallback
-	-webkit-flex-flow: $values;
-	-moz-flex-flow: $values;
-	-ms-flex-flow: $values;
-	flex-flow: $values;
+	@include experimental(flex-flow, $values, -moz, -webkit, not -o, -ms, not -khtml, official);
 }
 
 // Flexbox Order
