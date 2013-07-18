@@ -53,26 +53,21 @@
 // Default: row
 
 @mixin flex-direction($value) {
-	@include experimental(flex-direction, $value, -moz, -webkit, not -o, -ms, not -khtml, official);
+	$direction-value: normal;
+	$orient-value: horizontal;
 
-	@if $experimental-support-for-webkit {
-		@if $value == "row" {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: horizontal;
-		} @else if $value == "row-reverse" {
-			-webkit-box-direction: reverse;
-			-webkit-box-orient: horizontal;
-		} @else if $value == "column" {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: vertical;
-		} @else if $value == "column-reverse" {
-			-webkit-box-direction: reverse;
-			-webkit-box-orient: vertical;
-		} @else {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: horizontal;
-		}
+	@if $value == "row-reverse" {
+		$direction-value: reverse;
+	} @else if $value == "column" {
+		$orient-value: vertical;
+	} @else if $value == "column-reverse" {
+		$direction-value: reverse;
+		$orient-value: vertical;
 	}
+
+	@include experimental(box-direction, $direction-value, not -moz, -webkit, not -o, not -ms, not -khtml, not official);
+	@include experimental(box-orient, $orient-value, not -moz, -webkit, not -o, not -ms, not -khtml, not official);
+	@include experimental(flex-direction, $value, -moz, -webkit, not -o, -ms, not -khtml, official);
 }
 
 // Shorter version
@@ -86,15 +81,14 @@
 
 @mixin flex-wrap($value) {
 	// No Webkit Box fallback
-	@include experimental(flex-wrap, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
-	@if $experimental-support-for-microsoft {
-		@if $value == "nowrap" {
-			-ms-flex-wrap: none;
-		}
-		@else {
-			-ms-flex-wrap: $value;
-		}
+	$wrap-value: $value;
+
+	@if $value == "nowrap" {
+		$wrap-value: none;
 	}
+
+	@include experimental(flex-wrap, $wrap-value, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+	@include experimental(flex-wrap, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
 }
 
 // Flexbox Flow (shorthand)
