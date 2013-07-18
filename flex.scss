@@ -83,15 +83,15 @@
 
 @mixin flex-wrap($value) {
 	// No Webkit Box fallback
-	-webkit-flex-wrap: $value;
-	-moz-flex-wrap: $value;
-	@if $value == "nowrap" {
-		-ms-flex-wrap: none;
+	@include experimental(flex-wrap, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
+	@if $experimental-support-for-microsoft {
+		@if $value == "nowrap" {
+			-ms-flex-wrap: none;
+		}
+		@else {
+			-ms-flex-wrap: $value;
+		}
 	}
-	@else {
-		-ms-flex-wrap: $value;
-	}
-	flex-wrap: $value;
 }
 
 // Flexbox Flow (shorthand)
