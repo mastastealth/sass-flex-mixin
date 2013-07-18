@@ -202,18 +202,17 @@
 
 @mixin align-self($value) {
 	// No Webkit Box Fallback
-	-webkit-align-self: $value;
-	-moz-align-self: $value;
+	$align-value: $value;
+
 	@if $value == "flex-start" {
-		-ms-flex-item-align: start;
+		$align-value: start;
 	}
 	@else if $value == "flex-end" {
-		-ms-flex-item-align: end;
+		$align-value: end;
 	}
-	@else {
-		-ms-flex-item-align: $value;
-	}
-	align-self: $value;
+
+	@include experimental(flex-item-align, $align-value, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+	@include experimental(align-self, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
 }
 
 // Flexbox Align Content
