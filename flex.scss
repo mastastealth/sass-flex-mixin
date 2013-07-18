@@ -155,40 +155,23 @@
 // (space-* values not supported in older syntaxes)
 
 @mixin justify-content($value) {
+	$pack-value: $value;
+
 	@if $value == "flex-start" {
-		-webkit-box-pack: start;
-		-ms-flex-pack: start;
+		$pack-value: start;
 	}
 	@else if $value == "flex-end" {
-		-webkit-box-pack: end;
-		-ms-flex-pack: end;
+		$pack-value: end
 	}
-	@else {
-		-webkit-box-pack: $value;
-		-ms-flex-pack: $value;
-	}
-	-webkit-justify-content: $value;
-	-moz-justify-content: $value;
-	justify-content: $value;
+
+	@include experimental(box-pack, $pack-value, not -moz, -webkit, not -o, not -ms, not -khtml, not official);
+	@include experimental(flex-pack, $pack-value, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+	@include experimental(justify-content, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
 }
 
 // Shorter version
 @mixin flex-just($value) {
-	@if $value == "flex-start" {
-		-webkit-box-pack: start;
-		-ms-flex-pack: start;
-	}
-	@else if $value == "flex-end" {
-		-webkit-box-pack: end;
-		-ms-flex-pack: end;
-	}
-	@else {
-		-webkit-box-pack: $value;
-		-ms-flex-pack: $value;
-	}
-	-webkit-justify-content: $value;
-	-moz-justify-content: $value;
-	justify-content: $value;
+	@include justify-content($value);
 }
 
 // Flexbox Align Items
