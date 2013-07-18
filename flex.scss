@@ -116,10 +116,8 @@
 // Default: 0
 
 @mixin flex-grow($int) {
-	-webkit-flex-grow: $int;
-	-moz-flex-grow: $int;
-	-ms-flex-positive: $int;
-	flex-grow: $int;
+	@include experimental(flex-grow, $int, -moz, -webkit, not -o, not -ms, not -khtml, official);
+	@include experimental(flex-positive, $int, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
 }
 
 // Flexbox Shrink
