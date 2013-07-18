@@ -124,10 +124,8 @@
 // Default: 1
 
 @mixin flex-shrink($int) {
-	-webkit-flex-shrink: $int;
-	-moz-flex-shrink: $int;
-	-ms-flex-negative: $int;
-	flex-shrink: $int;
+	@include experimental(flex-shrink, $int, -moz, -webkit, not -o, not -ms, not -khtml, official);
+	@include experimental(flex-negative, $int, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
 }
 
 // Flexbox Basis
