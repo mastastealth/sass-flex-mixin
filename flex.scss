@@ -93,7 +93,7 @@
 		-webkit-box-orient: horizontal;
 	}
 	-webkit-flex-direction: $value;
-	-moz-flex-direction: $valus;
+	-moz-flex-direction: $value;
 	-ms-flex-direction: $value;
 	flex-direction: $value;
 }
@@ -131,11 +131,9 @@
 // Default: 0
 
 @mixin order($int) {
-	-webkit-box-ordinal-group: $int+1;
-	-webkit-order: $int;
-	-moz-order: $int;
-	-ms-flex-order: $int;
-	order: $int;
+	@include experimental(box-ordinal-group, $int, -moz, -webkit, not -o, not -ms, not -khtml, not official);
+	@include experimental(flex-order, $int, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
+	@include experimental(order, $int, -moz, -webkit, not -o, -ms, not -khtml, official);
 }
 
 // Flexbox Grow
