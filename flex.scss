@@ -40,11 +40,9 @@
 }
 
 @mixin inline-flex {
-	display: -webkit-inline-box;
-	display: -webkit-inline-flex;
-	display: -moz-inline-flex;
-	display: -ms-inline-flexbox;
-	display: inline-flex;
+	@include experimental-value(display, inline-box, not -moz, -webkit, not -o, not -ms, not -khtml, not official);
+	@include experimental-value(display, inline-flex, -moz, -webkit, not -o, not -ms, not -khtml, official);
+	@include experimental-value(display, inline-flexbox, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
 }
 
 // Flexbox Direction
