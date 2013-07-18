@@ -1,40 +1,40 @@
-/*  ======== Flexbox Mixins ==============
-	------------------------
-	Copyright (c) 2013 Brian Franco
-	
-	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-	------------------------
 
-	This is a set of mixins for those who want to mess
-	around with flexbox using the native support of current
-	browsers. For full support table check: http://caniuse.com/flexbox
-
-	Basically this will use:
-		Fallback, old syntax (IE10, Safari, mobile webkit browsers)
-		Prefixed standard syntax (Chrome)
-		Final standards syntax (FF, Opera 12.1)
-
-	------------------------
-	This was inspired by: 
-		http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/
-	With help from: 
-		http://www.w3.org/TR/css3-flexbox/
-		http://the-echoplex.net/flexyboxes/
-		http://msdn.microsoft.com/en-us/library/ie/hh772069%28v=vs.85%29.aspx
-*/
+//	https://github.com/mastastealth/sass-flex-mixin
+//
+//	======== Flexbox Mixins ==============
+//	------------------------
+//	Copyright (c) 2013 Brian Franco
+//
+//	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+//	The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+//	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//	------------------------
+//
+//	This is a set of mixins for those who want to mess
+//	around with flexbox using the native support of current
+//	browsers. For full support table check: http://caniuse.com/flexbox
+//
+//	Basically this will use:
+//		Fallback, old syntax (IE10, Safari, mobile webkit browsers)
+//		Prefixed standard syntax (Chrome)
+//		Final standards syntax (FF, Opera 12.1)
+//
+//	------------------------
+//	This was inspired by:
+//		http://dev.opera.com/articles/view/advanced-cross-browser-flexbox/
+//	With help from:
+//		http://www.w3.org/TR/css3-flexbox/
+//		http://the-echoplex.net/flexyboxes/
+//		http://msdn.microsoft.com/en-us/library/ie/hh772069%28v=vs.85%29.aspx
 
 
 // Flexbox Inits
 // display: flex | inline-flex
 
 @mixin flexbox {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flexbox;
-	display: flex;
+	@include experimental-value(display, box, -moz, -webkit, not -o, not -ms, not -khtml, not official);
+    @include experimental-value(display, flex, -moz, -webkit, not -o, not -ms, not -khtml, official);
+    @include experimental-value(display, flexbox, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
 }
 
 @mixin inline-flex {
@@ -50,7 +50,31 @@
 // Default: row
 
 @mixin flex-direction($value) {
-	@if $value == "row" { 
+	@if $value == "row" {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: horizontal;
+	} @else if $value == "row-reverse" {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: horizontal;
+	} @else if $value == "column" {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: vertical;
+	} @else if $value == "column-reverse" {
+		-webkit-box-direction: reverse;
+		-webkit-box-orient: vertical;
+	} @else {
+		-webkit-box-direction: normal;
+		-webkit-box-orient: horizontal;
+	}
+	-webkit-flex-direction: $value;
+	-moz-flex-direction: $value;
+	-ms-flex-direction: $value;
+	flex-direction: $value;
+}
+
+// Shorter version
+@mixin flex-dir($value) {
+	@if $value == "row" {
 		-webkit-box-direction: normal;
 		-webkit-box-orient: horizontal;
 	} @else if $value == "row-reverse" {
@@ -72,32 +96,8 @@
 	flex-direction: $value;
 }
 
-	// Shorter version
-	@mixin flex-dir($value) {
-		@if $value == "row" { 
-			-webkit-box-direction: normal;
-			-webkit-box-orient: horizontal;
-		} @else if $value == "row-reverse" {
-			-webkit-box-direction: reverse;
-			-webkit-box-orient: horizontal;
-		} @else if $value == "column" {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: vertical;
-		} @else if $value == "column-reverse" {
-			-webkit-box-direction: reverse;
-			-webkit-box-orient: vertical;
-		} @else {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: horizontal;
-		}
-		-webkit-flex-direction: $value;
-		-moz-flex-direction: $valus;
-		-ms-flex-direction: $value;
-		flex-direction: $value;
-	}
-
 // Flexbox Wrap
-// Values: nowrap | wrap | wrap-reverse 
+// Values: nowrap | wrap | wrap-reverse
 // Default: nowrap
 
 @mixin flex-wrap($value) {
@@ -106,15 +106,15 @@
 	-moz-flex-wrap: $value;
 	@if $value == "nowrap" {
 		-ms-flex-wrap: none;
-	} 
-	@else { 
-		-ms-flex-wrap: $value; 
+	}
+	@else {
+		-ms-flex-wrap: $value;
 	}
 	flex-wrap: $value;
 }
 
 // Flexbox Flow (shorthand)
-// Values: <flex-direction> | <flex-wrap> 
+// Values: <flex-direction> | <flex-wrap>
 // Default: row nowrap
 
 @mixin flex-flow($values) {
@@ -146,7 +146,7 @@
 	flex-grow: $int;
 }
 
-// Flexbox Shrink 
+// Flexbox Shrink
 // Default: 1
 
 @mixin flex-shrink($int) {
@@ -157,7 +157,7 @@
 }
 
 // Flexbox Basis
-// Values: Like "width" 
+// Values: Like "width"
 // Default: auto
 
 @mixin flex-basis($value) {
@@ -192,8 +192,8 @@
 	@else if $value == "flex-end" {
 		-webkit-box-pack: end;
 		-ms-flex-pack: end;
-	} 
-	@else { 
+	}
+	@else {
 		-webkit-box-pack: $value;
 		-ms-flex-pack: $value;
 	}
@@ -202,24 +202,24 @@
 	justify-content: $value;
 }
 
-	// Shorter version
-	@mixin flex-just($value) {
-		@if $value == "flex-start" {
-			-webkit-box-pack: start;
-			-ms-flex-pack: start;
-		}
-		@else if $value == "flex-end" {
-			-webkit-box-pack: end;
-			-ms-flex-pack: end;
-		} 
-		@else { 
-			-webkit-box-pack: $value;
-			-ms-flex-pack: $value;
-		}
-		-webkit-justify-content: $value;
-		-moz-justify-content: $value;
-		justify-content: $value;
+// Shorter version
+@mixin flex-just($value) {
+	@if $value == "flex-start" {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
 	}
+	@else if $value == "flex-end" {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+	}
+	@else {
+		-webkit-box-pack: $value;
+		-ms-flex-pack: $value;
+	}
+	-webkit-justify-content: $value;
+	-moz-justify-content: $value;
+	justify-content: $value;
+}
 
 // Flexbox Align Items
 // Values: flex-start | flex-end | center | baseline | stretch
@@ -233,9 +233,9 @@
 	@else if $value == "flex-end" {
 		-webkit-box-align: end;
 		-ms-flex-align: end;
-	} 
-	@else { 
-		-webkit-box-align: $value; 
+	}
+	@else {
+		-webkit-box-align: $value;
 		-ms-flex-align: $value;
 	}
 	-webkit-align-items: $value;
@@ -256,9 +256,9 @@
 	}
 	@else if $value == "flex-end" {
 		-ms-flex-item-align: end;
-	} 
-	@else { 
-		-ms-flex-item-align: $value; 
+	}
+	@else {
+		-ms-flex-item-align: $value;
 	}
 	align-self: $value;
 }
@@ -276,9 +276,9 @@
 	}
 	@else if $value == "flex-end" {
 		-ms-flex-line-pack: end;
-	} 
-	@else { 
-		-ms-flex-line-pack: $value; 
+	}
+	@else {
+		-ms-flex-line-pack: $value;
 	}
 	align-content: $value;
 }
