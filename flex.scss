@@ -50,50 +50,31 @@
 // Default: row
 
 @mixin flex-direction($value) {
-	@if $value == "row" {
-		-webkit-box-direction: normal;
-		-webkit-box-orient: horizontal;
-	} @else if $value == "row-reverse" {
-		-webkit-box-direction: reverse;
-		-webkit-box-orient: horizontal;
-	} @else if $value == "column" {
-		-webkit-box-direction: normal;
-		-webkit-box-orient: vertical;
-	} @else if $value == "column-reverse" {
-		-webkit-box-direction: reverse;
-		-webkit-box-orient: vertical;
-	} @else {
-		-webkit-box-direction: normal;
-		-webkit-box-orient: horizontal;
+	@include experimental(flex-direction, $value, -moz, -webkit, not -o, -ms, not -khtml, official);
+
+	@if $experimental-support-for-webkit {
+		@if $value == "row" {
+			-webkit-box-direction: normal;
+			-webkit-box-orient: horizontal;
+		} @else if $value == "row-reverse" {
+			-webkit-box-direction: reverse;
+			-webkit-box-orient: horizontal;
+		} @else if $value == "column" {
+			-webkit-box-direction: normal;
+			-webkit-box-orient: vertical;
+		} @else if $value == "column-reverse" {
+			-webkit-box-direction: reverse;
+			-webkit-box-orient: vertical;
+		} @else {
+			-webkit-box-direction: normal;
+			-webkit-box-orient: horizontal;
+		}
 	}
-	-webkit-flex-direction: $value;
-	-moz-flex-direction: $value;
-	-ms-flex-direction: $value;
-	flex-direction: $value;
 }
 
 // Shorter version
 @mixin flex-dir($value) {
-	@if $value == "row" {
-		-webkit-box-direction: normal;
-		-webkit-box-orient: horizontal;
-	} @else if $value == "row-reverse" {
-		-webkit-box-direction: reverse;
-		-webkit-box-orient: horizontal;
-	} @else if $value == "column" {
-		-webkit-box-direction: normal;
-		-webkit-box-orient: vertical;
-	} @else if $value == "column-reverse" {
-		-webkit-box-direction: reverse;
-		-webkit-box-orient: vertical;
-	} @else {
-		-webkit-box-direction: normal;
-		-webkit-box-orient: horizontal;
-	}
-	-webkit-flex-direction: $value;
-	-moz-flex-direction: $value;
-	-ms-flex-direction: $value;
-	flex-direction: $value;
+	@include flex-direction($value);
 }
 
 // Flexbox Wrap
