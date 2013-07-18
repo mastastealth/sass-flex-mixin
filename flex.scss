@@ -133,10 +133,8 @@
 // Default: auto
 
 @mixin flex-basis($value) {
-	-webkit-flex-basis: $value;
-	-moz-flex-basis: $value;
-	-ms-flex-preferred-size: $value;
-	flex-basis: $value;
+	@include experimental(flex-basis, $value, -moz, -webkit, not -o, not -ms, not -khtml, official);
+	@include experimental(flex-preferred-size, $value, not -moz, not -webkit, not -o, -ms, not -khtml, not official);
 }
 
 // Flexbox "Flex" (shorthand)
