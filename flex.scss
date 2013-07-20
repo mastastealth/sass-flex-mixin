@@ -14,7 +14,7 @@
 	Basically this will use:
 		Fallback, old syntax (IE10, Safari, mobile webkit browsers)
 		Prefixed standard syntax (Chrome)
-		Final standards syntax (FF, Opera 12.1)
+		Final standards syntax (FF, IE11, Opera 12.1)
 
 	------------------------
 	This was inspired by: 
@@ -74,26 +74,7 @@
 
 	// Shorter version
 	@mixin flex-dir($value) {
-		@if $value == "row" { 
-			-webkit-box-direction: normal;
-			-webkit-box-orient: horizontal;
-		} @else if $value == "row-reverse" {
-			-webkit-box-direction: reverse;
-			-webkit-box-orient: horizontal;
-		} @else if $value == "column" {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: vertical;
-		} @else if $value == "column-reverse" {
-			-webkit-box-direction: reverse;
-			-webkit-box-orient: vertical;
-		} @else {
-			-webkit-box-direction: normal;
-			-webkit-box-orient: horizontal;
-		}
-		-webkit-flex-direction: $value;
-		-moz-flex-direction: $value;
-		-ms-flex-direction: $value;
-		flex-direction: $value;
+		@include flex-direction($value)
 	}
 
 // Flexbox Wrap
@@ -204,21 +185,7 @@
 
 	// Shorter version
 	@mixin flex-just($value) {
-		@if $value == "flex-start" {
-			-webkit-box-pack: start;
-			-ms-flex-pack: start;
-		}
-		@else if $value == "flex-end" {
-			-webkit-box-pack: end;
-			-ms-flex-pack: end;
-		} 
-		@else { 
-			-webkit-box-pack: $value;
-			-ms-flex-pack: $value;
-		}
-		-webkit-justify-content: $value;
-		-moz-justify-content: $value;
-		justify-content: $value;
+		@include justify-content($value);
 	}
 
 // Flexbox Align Items
