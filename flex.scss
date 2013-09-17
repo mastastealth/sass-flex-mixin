@@ -121,6 +121,7 @@
 // Default: 0
 
 @mixin flex-grow($int) {
+	-webkit-box-flex: $int;
 	-webkit-flex-grow: $int;
 	-moz-flex-grow: $int;
 	-ms-flex-positive: $int;
