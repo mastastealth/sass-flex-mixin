@@ -174,7 +174,11 @@
 	@else if $value == "flex-end" {
 		-webkit-box-pack: end;
 		-ms-flex-pack: end;
-	} 
+	}
+	@else if $value == "space-between" {
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+	}
 	@else { 
 		-webkit-box-pack: $value;
 		-ms-flex-pack: $value;
