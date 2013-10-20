@@ -1,0 +1,183 @@
+/* TEST FILE ONLY! NOT INTEDED FOR USE IN REAL-WORLD! */
+
+@import "../flex";
+
+/*--------------------------------------------------------------------*/
+
+.flexbox { @include flexbox; }
+.flexbox-inline { @include inline-flex; }
+
+/*--------------------------------------------------------------------*/
+
+.flex-direction-A { @include flex-direction; }
+.flex-dir-A { @include flex-dir; }
+
+/* row */
+.flex-direction-B { @include flex-direction(row); }
+.flex-dir-B { @include flex-dir(row); }
+
+/* row-reverse */
+.flex-direction-C { @include flex-direction(row-reverse); }
+.flex-dir-C { @include flex-dir(row-reverse); }
+
+/* column */
+.flex-direction-D { @include flex-direction(column); }
+.flex-dir-D { @include flex-dir(column); }
+
+/* column-reverse */
+.flex-direction-E { @include flex-direction(column-reverse); }
+.flex-dir-E { @include flex-dir(column-reverse); }
+
+/*--------------------------------------------------------------------*/
+
+.flex-wrap-A { @include flex-wrap; }
+
+/* nowrap */
+.flex-wrap-B { @include flex-wrap(nowrap); }
+
+/* nowrap */
+.flex-wrap-C { @include flex-wrap(wrap); }
+
+/* nowrap */
+.flex-wrap-D { @include flex-wrap(wrap-reverse); }
+
+/*--------------------------------------------------------------------*/
+
+.flex-flow-A { @include flex-flow; }
+
+/* row nowrap */
+.flex-flow-B { @include flex-flow(row nowrap); }
+
+/* column-reverse wrap */
+.flex-flow-C { @include flex-flow(column-reverse wrap); }
+
+/*--------------------------------------------------------------------*/
+
+.order-A { @include order; }
+
+/* -1 */
+.order-B { @include order(-1); }
+
+/* 5 */
+.order-C { @include order(5); }
+
+/*--------------------------------------------------------------------*/
+
+.flex-grow-A { @include flex-grow; }
+
+/* 3 */
+.flex-grow-B { @include flex-grow(3); }
+
+/*--------------------------------------------------------------------*/
+
+.flex-shrink-A { @include flex-shrink; }
+
+/* 2 */
+.flex-shrink-B { @include flex-shrink(2); }
+
+/*--------------------------------------------------------------------*/
+
+.flex-basis-A { @include flex-basis; }
+
+.flex-basis-B { @include flex-basis(18rem); }
+
+/*--------------------------------------------------------------------*/
+
+.flex-A { @include flex; }
+
+/* 1, 6, 20% */
+.flex-B { @include flex(1, 6, 20%); }
+
+/* 1, 20%, null */
+.flex-C { @include flex(1, 20%); }
+
+/* 1, null, null */
+.flex-D { @include flex(1); }
+
+/*--------------------------------------------------------------------*/
+
+.justify-content-A { @include justify-content; }
+.flex-just-A { @include flex-just; }
+
+/* flex-start */
+.justify-content-B { @include justify-content(flex-start); }
+.flex-just-B { @include flex-just(flex-start); }
+
+/* flex-end */
+.justify-content-C { @include justify-content(flex-end); }
+.flex-just-C { @include flex-just(flex-end); }
+
+/* flex-end */
+.justify-content-D { @include justify-content(center); }
+.flex-just-D { @include flex-just(center); }
+
+/* space-between */
+.justify-content-E { @include justify-content(space-between); }
+.flex-just-E { @include flex-just(space-between); }
+
+/* space-around */
+.justify-content-E { @include justify-content(space-around); }
+.flex-just-E { @include flex-just(space-around); }
+
+/*--------------------------------------------------------------------*/
+
+.align-items-A { @include align-items; }
+
+/* flex-start */
+.align-items-C { @include align-items(flex-start); }
+
+/* flex-end */
+.align-items-D { @include align-items(flex-end); }
+
+/* center */
+.align-items-E { @include align-items(center); }
+
+/* baseline */
+.align-items-F { @include align-items(baseline); }
+
+/* stretch */
+.align-items-G { @include align-items(stretch); }
+
+/*--------------------------------*/
+
+.align-self-A { @include align-self; }
+
+/* auto */
+.align-self-B { @include align-self(auto); }
+
+/* flex-start */
+.align-self-C { @include align-self(flex-start); }
+
+/* flex-end */
+.align-self-D { @include align-self(flex-end); }
+
+/* center */
+.align-self-E { @include align-self(center); }
+
+/* baseline */
+.align-self-F { @include align-self(baseline); }
+
+/* stretch */
+.align-self-G { @include align-self(stretch); }
+
+/*--------------------------------------------------------------------*/
+
+.align-content-A { @include align-content; }
+
+/* flex-start */
+.align-content-B { @include align-content(flex-start); }
+
+/* flex-end */
+.align-content-C { @include align-content(flex-end); }
+
+/* center */
+.align-content-D { @include align-content(center); }
+
+/* space-between */
+.align-content-E { @include align-content(space-between); }
+
+/* space-around */
+.align-content-F { @include align-content(space-around); }
+
+/* stretch */
+.align-content-G { @include align-content(stretch); }
