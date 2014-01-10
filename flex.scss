@@ -57,8 +57,10 @@
 // display: flex | inline-flex
 //
 // http://w3.org/tr/css3-flexbox/#flex-containers
+//
+// (Placeholder selectors for each type, for those who rather @extend)
 
-%flexbox {
+@mixin flexbox {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -66,15 +68,19 @@
 	display: flex;
 }
 
+%flexbox { @include flexbox; }
+
 //----------------------------------
 
-%inline-flex {
+@mixin inline-flex {
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: -moz-inline-flex;
 	display: -ms-inline-flexbox;
 	display: inline-flex;
 }
+
+%inline-flex { @include inline-flex; }
 
 //----------------------------------------------------------------------
 
