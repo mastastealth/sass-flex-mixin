@@ -58,7 +58,7 @@
 //
 // http://w3.org/tr/css3-flexbox/#flex-containers
 
-@mixin flexbox {
+%flexbox {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -68,7 +68,7 @@
 
 //----------------------------------
 
-@mixin inline-flex {
+%inline-flex {
 	display: -webkit-inline-box;
 	display: -webkit-inline-flex;
 	display: -moz-inline-flex;

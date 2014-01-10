@@ -4,8 +4,8 @@
 
 /*--------------------------------------------------------------------*/
 
-.flexbox { @include flexbox; }
-.flexbox-inline { @include inline-flex; }
+.flexbox { @extend %flexbox; }
+.flexbox-inline { @extend %inline-flex; }
 
 /*--------------------------------------------------------------------*/
 
