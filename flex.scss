@@ -228,7 +228,7 @@
 // Values: Like "width" 
 // Default: auto
 //
-// http://w3.org/tr/css3-flexbox/#flex-shrink-property
+// http://www.w3.org/TR/css3-flexbox/#flex-basis-property
 
 @mixin flex-basis($value: auto) {
 	-webkit-flex-basis: $value;
