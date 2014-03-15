@@ -253,20 +253,19 @@
 // http://w3.org/tr/css3-flexbox/#flex-property
 
 @mixin flex($fg: 1, $fs: null, $fb: null) {
+    
+	// Set a variable to be used by box-flex properties
+	$fg-boxflex: $fg;
 
 	// Box-Flex only supports a flex-grow value so let's grab the
 	// first item in the list and just return that.
 	@if type-of($fg) == 'list' {
-		$fg: nth($fg, 1);
-		-webkit-box-flex: $fg;
-	}
-	// If the user wrote their include properly, just return the right value.
-	@else {
-		-webkit-box-flex: $fg;
+		$fg-boxflex: nth($fg, 1);
 	}
 
+	-webkit-box-flex: $fg-boxflex;
 	-webkit-flex: $fg $fs $fb;
-	-moz-box-flex: $fg;
+	-moz-box-flex: $fg-boxflex;
 	-moz-flex: $fg $fs $fb;
 	-ms-flex: $fg $fs $fb;
 	flex: $fg $fs $fb;
