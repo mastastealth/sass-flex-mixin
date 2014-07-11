@@ -299,6 +299,8 @@
 	} @else if $value == space-between {
 		-webkit-box-pack: justify;
 		-ms-flex-pack: justify;
+	} @else if $value == space-around {
+		-ms-flex-pack: distribute;		
 	} @else {
 		-webkit-box-pack: $value;
 		-ms-flex-pack: $value;
