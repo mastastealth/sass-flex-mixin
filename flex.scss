@@ -115,7 +115,7 @@
 	flex-direction: $value;
 }
 	// Shorter version:
-	@mixin flex-dir($value: false) { @include flex-direction($value); }
+	@mixin flex-dir($args...) { @include flex-direction($args...); }
 
 //----------------------------------------------------------------------
 
@@ -310,7 +310,7 @@
 	justify-content: $value;
 }
 	// Shorter version:
-	@mixin flex-just($value: flex-start) { @include justify-content($value); }
+	@mixin flex-just($args...) { @include justify-content($args...); }
 
 //----------------------------------------------------------------------
 
