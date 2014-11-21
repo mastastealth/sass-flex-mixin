@@ -1,0 +1,19 @@
+{
+  "name": "sass-flex-mixin",
+  "version": "1.0.0",
+  "main": [
+    "flex.scss"
+  ],
+  "ignore": [
+    "tests",
+    "**/.*",
+    "**/*.md",
+    "**/*.json"
+  ],
+  "dependencies": {},
+  "devDependencies": {},
+  "keywords": [
+    "sass",
+    "css"
+  ]
+}
