@@ -17,3 +17,5 @@ With help from:
 - http://msdn.microsoft.com/en-us/library/ie/hh772069%28v=vs.85%29.aspx
 
 A version compatible with Compass is provided by @trinonsense, on the compass branch.
+
+Licensed under MIT.
