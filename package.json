@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Set of mixins for cross-browser compatible flexbox",
   "main": "index.js",
+  "sass": "_flexbox.scss",
   "repository": {
     "type": "git",
     "url": "https://github.com/mastastealth/sass-flex-mixin.git"
