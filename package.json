@@ -1,6 +1,6 @@
 {
   "name": "sass-flex-mixin",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Set of mixins for cross-browser compatible flexbox",
   "main": "index.js",
   "sass": "_flexbox.scss",
@@ -11,7 +11,8 @@
   "keywords": [
     "sass",
     "css",
-    "flexbox"
+    "flexbox",
+	"mixin"
   ],
   "author": "Brian Franco <hi@brianfran.co> (http://brianfran.co/)",
   "license": "MIT",
