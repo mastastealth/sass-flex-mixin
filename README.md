@@ -1,3 +1,4 @@
+## Sass flexbox mixin
 This is a set of mixins for those who want to mess
 around with flexbox using the native support of current
 browsers. For full support table check: http://caniuse.com/flexbox
@@ -5,6 +6,11 @@ browsers. For full support table check: http://caniuse.com/flexbox
 Basically this will use:
 - Fallback, old syntax (IE10, mobile webkit browsers - no wrapping)
 - Final standards syntax (FF, Safari, Chrome, IE11, Opera)
+
+## Installation
+#### Bower
+
+`bower install sass-flex-mixin`
 
 ------------------------
 This was inspired by: 
