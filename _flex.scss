@@ -133,6 +133,7 @@
 	// No Webkit Box fallback.
 	-webkit-flex-wrap: $value;
 	-moz-flex-wrap: $value;
+	-ms-flex-wrap: $value;
 	flex-wrap: $value;
 }
 
