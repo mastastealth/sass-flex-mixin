@@ -251,7 +251,7 @@
 //
 // http://w3.org/tr/css3-flexbox/#flex-property
 
-@mixin flex($fg: 1, $fs: null, $fb: null) {
+@mixin flex($fg: 0, $fs: 1, $fb: auto) {
     
 	// Set a variable to be used by box-flex properties
 	$fg-boxflex: $fg;
