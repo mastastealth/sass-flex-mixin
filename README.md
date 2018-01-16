@@ -1,3 +1,7 @@
+⚠⚠⚠
+**NO LONGER MAINTAINED:** With [every major browser](https://caniuse.com/#search=flexbox) supporting Flexbox now, and tools like [autoprefixer](https://github.com/postcss/autoprefixer) covering this and so much more, I am no longer maintaining this repo (as may already be apparent). Feel free to fork and continue using it if you must, but you should really use Autoprefixer now!
+⚠⚠⚠
+
 ## Sass flexbox mixin
 This is a set of mixins for those who want to mess
 around with flexbox using the native support of current
